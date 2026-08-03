@@ -3,22 +3,19 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Prudhvi Mandapakala — Business Analyst</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
+<title>Prudhvi Mandapakala — Business Analyst, Healthcare IT</title>
 <style>
   :root{
-    --bg:#0F1720;
-    --panel:#16212C;
-    --panel-2:#1C2A36;
-    --line:#26343F;
-    --text:#E8EDF2;
-    --muted:#8B9AAB;
-    --teal:#4FD1C5;
-    --amber:#F2B84B;
-    --coral:#EF7B6A;
-    --radius:10px;
+    --bg:#0B0F14;
+    --surface:#111823;
+    --surface-2:#161F2B;
+    --border:#233043;
+    --text:#E6EDF3;
+    --muted:#8B97A5;
+    --accent:#38BDF8;
+    --accent-2:#F2B85C;
+    --mono: 'JetBrains Mono','SFMono-Regular',Consolas,monospace;
+    --sans: 'Inter','Segoe UI',Helvetica,Arial,sans-serif;
   }
   *{box-sizing:border-box;}
   html{scroll-behavior:smooth;}
@@ -26,232 +23,148 @@
     margin:0;
     background:var(--bg);
     color:var(--text);
-    font-family:'Inter',sans-serif;
-    line-height:1.6;
+    font-family:var(--sans);
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
   }
-  h1,h2,h3,h4{
-    font-family:'Space Grotesk',sans-serif;
-    margin:0;
-    letter-spacing:-0.01em;
-  }
-  .mono{font-family:'IBM Plex Mono',monospace;}
-  a{color:inherit;}
-  ::selection{background:var(--teal);color:#08201C;}
+  a{color:inherit;text-decoration:none;}
+  .wrap{max-width:1040px;margin:0 auto;padding:0 24px;}
 
-  @media (prefers-reduced-motion: reduce){
-    *{animation:none !important; transition:none !important;}
-  }
-
-  /* ---------- Layout shell ---------- */
-  .wrap{max-width:1100px;margin:0 auto;padding:0 24px;}
-  .grid-bg{
-    position:fixed;inset:0;z-index:-1;
-    background-image:
-      linear-gradient(var(--line) 1px, transparent 1px),
-      linear-gradient(90deg, var(--line) 1px, transparent 1px);
-    background-size:48px 48px;
-    opacity:0.25;
-    mask-image:radial-gradient(ellipse 80% 60% at 50% 0%, black 40%, transparent 100%);
-  }
-
-  /* ---------- Top nav ---------- */
-  header{
-    position:sticky;top:0;z-index:50;
-    background:rgba(15,23,32,0.85);
-    backdrop-filter:blur(10px);
-    border-bottom:1px solid var(--line);
+  /* NAV */
+  header.site{
+    position:sticky;top:0;z-index:20;
+    background:rgba(11,15,20,0.85);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--border);
   }
   nav{
     display:flex;align-items:center;justify-content:space-between;
-    padding:16px 24px;max-width:1100px;margin:0 auto;
+    max-width:1040px;margin:0 auto;padding:16px 24px;
   }
-  .brand{display:flex;align-items:center;gap:10px;font-weight:600;font-size:15px;}
-  .brand-dot{width:9px;height:9px;border-radius:2px;background:var(--teal);
-    box-shadow:0 0 12px var(--teal);}
+  .brand{font-family:var(--mono);font-weight:600;font-size:15px;letter-spacing:0.02em;}
+  .brand span{color:var(--accent);}
   .navlinks{display:flex;gap:28px;font-size:14px;color:var(--muted);}
-  .navlinks a{text-decoration:none;transition:color .15s;position:relative;}
-  .navlinks a:hover, .navlinks a:focus-visible{color:var(--text);}
-  .navlinks a:focus-visible{outline:2px solid var(--teal);outline-offset:4px;border-radius:2px;}
-  .status-pill{
-    display:flex;align-items:center;gap:6px;
-    font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--teal);
-    border:1px solid rgba(79,209,197,0.35);background:rgba(79,209,197,0.08);
-    padding:5px 10px;border-radius:20px;
+  .navlinks a:hover{color:var(--text);}
+  .badge{
+    font-family:var(--mono);font-size:11px;letter-spacing:0.08em;
+    color:#7EE787;background:rgba(126,231,135,0.08);
+    border:1px solid rgba(126,231,135,0.35);
+    padding:4px 10px;border-radius:20px;
   }
-  .pulse{width:6px;height:6px;background:var(--teal);border-radius:50%;
-    animation:pulse 2s infinite;}
-  @keyframes pulse{0%,100%{opacity:1;}50%{opacity:.35;}}
 
-  /* ---------- Hero / Dashboard ---------- */
-  .hero{padding:64px 0 24px;}
-  .hero-top{
-    display:flex;justify-content:space-between;align-items:flex-end;
-    flex-wrap:wrap;gap:24px;margin-bottom:28px;
+  /* HERO */
+  .hero{padding:72px 0 48px;border-bottom:1px solid var(--border);}
+  .eyebrow{font-family:var(--mono);color:var(--accent);font-size:13px;letter-spacing:0.03em;margin-bottom:18px;}
+  h1{font-size:40px;line-height:1.25;margin:0 0 20px;font-weight:700;letter-spacing:-0.01em;}
+  h1 .accent{color:var(--accent);}
+  .lede{color:var(--muted);font-size:17px;max-width:640px;margin:0 0 28px;}
+  .cta-row{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:44px;}
+  .cta-row a{
+    font-family:var(--mono);font-size:13px;
+    border:1px solid var(--border);padding:9px 14px;border-radius:8px;
+    color:var(--text);background:var(--surface);
   }
-  .eyebrow{
-    font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--muted);
-    text-transform:uppercase;letter-spacing:0.12em;margin-bottom:12px;
+  .cta-row a:hover{border-color:var(--accent);color:var(--accent);}
+
+  .statgrid{
+    display:grid;grid-template-columns:repeat(4,1fr);
+    border:1px solid var(--border);border-radius:12px;overflow:hidden;
   }
-  .hero h1{font-size:clamp(32px,5vw,52px);font-weight:700;max-width:720px;}
-  .hero h1 span{color:var(--teal);}
-  .hero-sub{color:var(--muted);max-width:560px;margin-top:14px;font-size:15.5px;}
-  .contact-row{display:flex;flex-wrap:wrap;gap:14px;margin-top:22px;}
+  .stat{padding:18px 16px;border-right:1px solid var(--border);background:var(--surface);}
+  .stat:last-child{border-right:none;}
+  .stat .num{font-family:var(--mono);font-size:20px;color:var(--accent);font-weight:600;}
+  .stat .lbl{font-size:12px;color:var(--muted);margin-top:4px;}
+
+  /* SECTION SHELL */
+  section{padding:56px 0;border-bottom:1px solid var(--border);}
+  .sec-head{display:flex;align-items:baseline;gap:14px;margin-bottom:8px;}
+  .sec-num{font-family:var(--mono);color:var(--accent-2);font-size:14px;}
+  .sec-title{font-size:24px;font-weight:700;margin:0;}
+  .sec-sub{color:var(--muted);font-size:14px;margin:6px 0 32px;}
+
+  /* EXPERIENCE */
+  .job{
+    border:1px solid var(--border);border-radius:12px;background:var(--surface);
+    padding:24px 26px;margin-bottom:18px;
+  }
+  .job-top{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:8px;margin-bottom:4px;}
+  .job-role{font-size:17px;font-weight:700;}
+  .job-time{font-family:var(--mono);font-size:12px;color:var(--accent);white-space:nowrap;}
+  .job-org{color:var(--muted);font-size:13px;margin-bottom:14px;}
+  .job ul{margin:0;padding-left:18px;color:#C7D1DC;font-size:14.5px;}
+  .job li{margin-bottom:8px;}
+  .job li:last-child{margin-bottom:0;}
+
+  /* PROJECTS */
+  .projgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+  .proj{
+    border:1px solid var(--border);border-radius:12px;background:var(--surface);
+    padding:22px;display:flex;flex-direction:column;
+  }
+  .proj-tag{font-family:var(--mono);font-size:11px;color:var(--accent-2);letter-spacing:0.05em;margin-bottom:10px;}
+  .proj h3{font-size:16.5px;margin:0 0 10px;}
+  .proj p{color:var(--muted);font-size:13.5px;margin:0 0 14px;flex-grow:1;}
+  .proj .stackline{font-family:var(--mono);font-size:11px;color:#6E7A88;border-top:1px solid var(--border);padding-top:12px;}
+
+  /* SKILLS */
+  .skillgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;}
+  .skillcat{border:1px solid var(--border);border-radius:12px;background:var(--surface);padding:20px 22px;}
+  .skillcat h4{font-family:var(--mono);font-size:12px;color:var(--accent);letter-spacing:0.04em;margin:0 0 14px;text-transform:uppercase;}
+  .pill-row{display:flex;flex-wrap:wrap;gap:8px;}
+  .pill{
+    font-size:12.5px;border:1px solid var(--border);border-radius:20px;
+    padding:5px 12px;color:#C7D1DC;background:var(--surface-2);
+  }
+
+  /* EDUCATION + CERTS */
+  .edu{
+    border:1px solid var(--border);border-radius:12px;background:var(--surface);
+    padding:24px 26px;margin-bottom:18px;
+  }
+  .edu-top{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-bottom:6px;}
+  .edu h3{margin:0;font-size:17px;}
+  .edu-time{font-family:var(--mono);font-size:12px;color:var(--accent);}
+  .edu-org{color:var(--muted);font-size:13px;margin-bottom:14px;}
+  .taglist{display:flex;flex-wrap:wrap;gap:8px;}
+  .tag{font-size:12px;color:var(--muted);border:1px solid var(--border);border-radius:6px;padding:4px 9px;}
+
+  .certgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;}
+  .cert{
+    border:1px solid var(--border);border-radius:8px;background:var(--surface);
+    padding:12px 14px;font-size:13px;display:flex;align-items:center;justify-content:space-between;gap:10px;
+  }
+  .cert .status{font-family:var(--mono);font-size:10.5px;color:var(--accent-2);white-space:nowrap;}
+  .cert .status.done{color:#7EE787;}
+
+  /* CONTACT */
+  .contact{text-align:center;padding:72px 0;border-bottom:none;}
+  .contact h2{font-size:30px;margin:0 0 12px;}
+  .contact p{color:var(--muted);max-width:480px;margin:0 auto 28px;}
+  .contact-row{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;}
   .contact-row a{
-    font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--text);
-    border:1px solid var(--line);padding:8px 14px;border-radius:6px;
-    text-decoration:none;display:flex;align-items:center;gap:8px;
-    transition:border-color .15s, background .15s;
+    font-family:var(--mono);font-size:13px;padding:11px 18px;border-radius:8px;border:1px solid var(--border);
   }
-  .contact-row a:hover{border-color:var(--teal);background:rgba(79,209,197,0.06);}
-  .contact-row a:focus-visible{outline:2px solid var(--teal);outline-offset:2px;}
+  .contact-row a.primary{background:var(--accent);color:#04111A;border-color:var(--accent);font-weight:600;}
+  .contact-row a:not(.primary):hover{border-color:var(--accent);color:var(--accent);}
 
-  /* KPI dashboard grid */
-  .dash{
-    display:grid;
-    grid-template-columns:repeat(4,1fr);
-    gap:1px;
-    background:var(--line);
-    border:1px solid var(--line);
-    border-radius:var(--radius);
-    overflow:hidden;
-    margin-top:8px;
-  }
-  .kpi{
-    background:var(--panel);
-    padding:22px 20px;
-    display:flex;flex-direction:column;gap:6px;
-    opacity:0;
-    animation:rise .6s ease forwards;
-  }
-  .kpi:nth-child(1){animation-delay:.05s;}
-  .kpi:nth-child(2){animation-delay:.15s;}
-  .kpi:nth-child(3){animation-delay:.25s;}
-  .kpi:nth-child(4){animation-delay:.35s;}
-  @keyframes rise{from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:translateY(0);}}
-  .kpi-label{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--muted);
-    text-transform:uppercase;letter-spacing:.08em;}
-  .kpi-value{font-family:'Space Grotesk',sans-serif;font-size:30px;font-weight:700;}
-  .kpi-value.teal{color:var(--teal);}
-  .kpi-value.amber{color:var(--amber);}
-  .kpi-value.coral{color:var(--coral);}
-  .kpi-note{font-size:12px;color:var(--muted);}
+  footer{padding:24px 0 40px;text-align:center;color:#5B6673;font-size:12px;}
 
-  .chart-panel{
-    margin-top:1px;
-    background:var(--panel);
-    border:1px solid var(--line);
-    border-top:none;
-    border-radius:0 0 var(--radius) var(--radius);
-    padding:20px 20px 12px;
-  }
-  .chart-panel-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;}
-  .chart-panel-head h4{font-size:13px;color:var(--muted);font-weight:500;
-    font-family:'IBM Plex Mono',monospace;text-transform:uppercase;letter-spacing:.08em;}
-  .legend-dot{display:inline-flex;align-items:center;gap:6px;font-size:12px;color:var(--muted);margin-left:16px;}
-  .legend-dot::before{content:'';width:8px;height:8px;border-radius:2px;background:var(--dot,var(--teal));}
-  canvas{max-height:180px;}
-
-  /* ---------- Section shell ---------- */
-  section{padding:72px 0;border-top:1px solid var(--line);}
-  .sec-head{display:flex;align-items:baseline;gap:14px;margin-bottom:36px;}
-  .sec-num{font-family:'IBM Plex Mono',monospace;color:var(--teal);font-size:13px;}
-  .sec-head h2{font-size:26px;}
-  .sec-head p{color:var(--muted);font-size:14px;margin-left:auto;max-width:340px;text-align:right;}
-
-  /* ---------- Skills ---------- */
-  .skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1px;
-    background:var(--line);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;}
-  .skill-cat{background:var(--panel);padding:22px;}
-  .skill-cat h3{font-size:13px;color:var(--muted);font-family:'IBM Plex Mono',monospace;
-    text-transform:uppercase;letter-spacing:.06em;margin-bottom:14px;font-weight:500;}
-  .chip-row{display:flex;flex-wrap:wrap;gap:8px;}
-  .chip{
-    font-size:12.5px;padding:6px 11px;border-radius:5px;
-    background:var(--panel-2);border:1px solid var(--line);color:var(--text);
-  }
-
-  /* ---------- Experience timeline ---------- */
-  .timeline{position:relative;padding-left:28px;}
-  .timeline::before{
-    content:'';position:absolute;left:6px;top:6px;bottom:6px;width:1px;
-    background:linear-gradient(var(--teal), var(--line));
-  }
-  .tl-item{position:relative;margin-bottom:44px;}
-  .tl-item:last-child{margin-bottom:0;}
-  .tl-dot{position:absolute;left:-28px;top:5px;width:13px;height:13px;border-radius:50%;
-    background:var(--bg);border:2px solid var(--teal);}
-  .tl-head{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px;margin-bottom:4px;}
-  .tl-head h3{font-size:18px;}
-  .tl-date{font-family:'IBM Plex Mono',monospace;font-size:12.5px;color:var(--teal);white-space:nowrap;}
-  .tl-list{margin:12px 0 0;padding-left:18px;color:var(--muted);font-size:14.5px;}
-  .tl-list li{margin-bottom:7px;}
-  .tl-list li::marker{color:var(--amber);}
-
-  /* ---------- Projects ---------- */
-  .proj-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px;}
-  .proj-card{
-    background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);
-    padding:24px;display:flex;flex-direction:column;gap:14px;
-    transition:transform .2s, border-color .2s;
-  }
-  .proj-card:hover{transform:translateY(-3px);border-color:rgba(79,209,197,0.4);}
-  .proj-tag{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--coral);
-    text-transform:uppercase;letter-spacing:.08em;}
-  .proj-card h3{font-size:17px;}
-  .proj-card p{color:var(--muted);font-size:14px;margin:0;}
-  .proj-stats{display:flex;gap:18px;margin-top:auto;padding-top:12px;border-top:1px solid var(--line);}
-  .proj-stat{display:flex;flex-direction:column;}
-  .proj-stat b{font-family:'IBM Plex Mono',monospace;font-size:16px;color:var(--teal);}
-  .proj-stat span{font-size:11px;color:var(--muted);}
-
-  /* ---------- Education ---------- */
-  .edu-card{
-    background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);
-    padding:26px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;align-items:center;
-  }
-  .edu-card h3{font-size:18px;margin-bottom:4px;}
-  .edu-card .muted{color:var(--muted);font-size:14px;}
-  .edu-badge{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--amber);
-    border:1px solid rgba(242,184,75,0.35);background:rgba(242,184,75,0.08);
-    padding:6px 12px;border-radius:20px;white-space:nowrap;}
-  .coursework{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px;}
-
-  /* ---------- Contact / Footer ---------- */
-  .contact-panel{
-    background:linear-gradient(135deg, var(--panel), var(--panel-2));
-    border:1px solid var(--line);border-radius:var(--radius);
-    padding:48px;text-align:center;
-  }
-  .contact-panel h2{font-size:28px;margin-bottom:10px;}
-  .contact-panel p{color:var(--muted);max-width:460px;margin:0 auto 26px;}
-  .btn-row{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;}
-  .btn{
-    font-family:'IBM Plex Mono',monospace;font-size:13.5px;padding:12px 22px;border-radius:7px;
-    text-decoration:none;border:1px solid var(--line);transition:all .15s;
-  }
-  .btn-primary{background:var(--teal);color:#08201C;border-color:var(--teal);font-weight:600;}
-  .btn-primary:hover{background:#3fc0b3;}
-  .btn-ghost:hover{border-color:var(--teal);color:var(--teal);}
-  .btn:focus-visible{outline:2px solid var(--teal);outline-offset:2px;}
-
-  footer{padding:28px 0 40px;text-align:center;color:var(--muted);font-size:12.5px;
-    font-family:'IBM Plex Mono',monospace;}
-
-  @media (max-width:720px){
-    .dash{grid-template-columns:repeat(2,1fr);}
-    .sec-head{flex-direction:column;align-items:flex-start;}
-    .sec-head p{text-align:left;margin-left:0;}
+  @media (max-width:760px){
+    h1{font-size:30px;}
+    .statgrid{grid-template-columns:repeat(2,1fr);}
+    .stat{border-bottom:1px solid var(--border);}
+    .projgrid{grid-template-columns:1fr;}
+    .skillgrid{grid-template-columns:1fr;}
+    .certgrid{grid-template-columns:1fr;}
     .navlinks{display:none;}
-    .contact-panel{padding:32px 20px;}
   }
 </style>
 </head>
 <body>
-<div class="grid-bg"></div>
 
-<header>
+<header class="site">
   <nav>
-    <div class="brand"><span class="brand-dot"></span> Prudhvi Mandapakala</div>
+    <div class="brand">Prudhvi <span>Mandapakala</span></div>
     <div class="navlinks">
       <a href="#experience">Experience</a>
       <a href="#projects">Projects</a>
@@ -259,288 +172,211 @@
       <a href="#education">Education</a>
       <a href="#contact">Contact</a>
     </div>
-    <div class="status-pill"><span class="pulse"></span>OPEN TO WORK</div>
+    <div class="badge">OPEN TO WORK</div>
   </nav>
 </header>
 
-<main>
-  <!-- HERO / LIVE DASHBOARD -->
-  <section class="hero" style="border-top:none;">
-    <div class="wrap">
-      <div class="hero-top">
-        <div>
-          <div class="eyebrow">// business_analyst.dashboard — Lafayette, LA</div>
-          <h1>I turn messy business questions into <span>clean, decision-ready data.</span></h1>
-          <p class="hero-sub">M.S. in Business Analytics and 4+ years translating stakeholder needs into requirements, dashboards, and reporting that leadership actually acts on. SQL, Power BI, Tableau, Python.</p>
-        </div>
-      </div>
+<div class="wrap">
+  <section class="hero">
+    <div class="eyebrow">// business_analyst.dashboard — Lafayette, LA</div>
+    <h1>I turn healthcare and business data into <span class="accent">decisions IT teams can ship.</span></h1>
+    <p class="lede">
+      Business Analyst with 5+ years spanning healthcare IT, digital health platforms, and data analytics —
+      including hands-on work supporting digital health enhancements at Humana. I gather requirements, map
+      processes, run Agile delivery in JIRA, and write SQL/Python-based UAT test cases that keep releases on time
+      and HIPAA-compliant.
+    </p>
+    <div class="cta-row">
+      <a href="mailto:mvsprudhvi2023@gmail.com">✉ mvsprudhvi2023@gmail.com</a>
+      <a href="tel:+13377392391">☎ (337) 739-2391</a>
+      <a href="https://linkedin.com/in/prudhvi-m-48655a1a2" target="_blank" rel="noopener">in/ LinkedIn</a>
+      <a href="https://github.com/mvsprudhvi2023-lang" target="_blank" rel="noopener">⌥ GitHub</a>
+    </div>
 
-      <div class="contact-row">
-        <a href="mailto:mvsprudhvi2023@gmail.com">✉ mvsprudhvi2023@gmail.com</a>
-        <a href="tel:+13377392391">☎ (337) 739-2391</a>
-        <a href="https://linkedin.com/in/prudhví-m-48655a1a2" target="_blank" rel="noopener">in/ LinkedIn</a>
-        <a href="https://github.com/mvsprudhvi2023-lang" target="_blank" rel="noopener">⌥ GitHub</a>
-      </div>
-
-      <div class="dash" style="margin-top:32px;">
-        <div class="kpi">
-          <span class="kpi-label">Experience</span>
-          <span class="kpi-value teal">4+ <small style="font-size:15px;color:var(--muted);">yrs</small></span>
-          <span class="kpi-note">Data Engineering → Business Analysis</span>
-        </div>
-        <div class="kpi">
-          <span class="kpi-label">Dashboards Shipped</span>
-          <span class="kpi-value amber">KPI</span>
-          <span class="kpi-note">Scorecards, Tableau & Power BI</span>
-        </div>
-        <div class="kpi">
-          <span class="kpi-label">Core Stack</span>
-          <span class="kpi-value coral">SQL / PY</span>
-          <span class="kpi-note">+ Power BI, Tableau, Azure</span>
-        </div>
-        <div class="kpi">
-          <span class="kpi-label">Degree</span>
-          <span class="kpi-value">MSBA</span>
-          <span class="kpi-note">Trine University, 2026</span>
-        </div>
-      </div>
-      <div class="chart-panel">
-        <div class="chart-panel-head">
-          <h4>Career Focus Areas — Relative Emphasis</h4>
-          <div>
-            <span class="legend-dot" style="--dot:var(--teal);">Requirements &amp; Analysis</span>
-            <span class="legend-dot" style="--dot:var(--amber);">Reporting &amp; Dashboards</span>
-          </div>
-        </div>
-        <canvas id="focusChart" height="60"></canvas>
-      </div>
+    <div class="statgrid">
+      <div class="stat"><div class="num">5+ yrs</div><div class="lbl">Healthcare IT → Data Analytics</div></div>
+      <div class="stat"><div class="num">HIPAA</div><div class="lbl">Compliant digital health delivery</div></div>
+      <div class="stat"><div class="num">SQL / PY</div><div class="lbl">+ Power BI, Tableau, Snowflake, Azure</div></div>
+      <div class="stat"><div class="num">MSBA</div><div class="lbl">Trine University, 2026</div></div>
     </div>
   </section>
 
-  <!-- EXPERIENCE -->
   <section id="experience">
-    <div class="wrap">
-      <div class="sec-head">
-        <span class="sec-num">01</span>
-        <h2>Professional Experience</h2>
-        <p>A track record built on requirements gathering, reporting automation, and stakeholder trust.</p>
-      </div>
+    <div class="sec-head"><span class="sec-num">01</span><h2 class="sec-title">Professional Experience</h2></div>
+    <p class="sec-sub">From frontline technical support to healthcare IT requirements and digital health delivery.</p>
 
-      <div class="timeline">
-        <div class="tl-item">
-          <span class="tl-dot"></span>
-          <div class="tl-head">
-            <h3>Data Engineer — Business Analysis &amp; Reporting</h3>
-            <span class="tl-date">MAR 2021 — MAR 2024</span>
-          </div>
-          <ul class="tl-list">
-            <li>Partnered with business stakeholders to gather and document requirements, translating business needs into clear, data-driven reporting solutions.</li>
-            <li>Analyzed business processes and user requirements to identify inefficiencies, recommending improvements adopted across teams.</li>
-            <li>Wrote SQL queries and built analytical reports that improved operational visibility and supported leadership decision-making.</li>
-            <li>Automated recurring reporting workflows using Python and SQL, reducing manual effort and improving reporting accuracy.</li>
-            <li>Performed data validation, cleansing, and quality assurance to ensure reliable, audit-ready business reporting.</li>
-            <li>Built dashboards and KPI scorecards that helped stakeholders monitor key business indicators and track project outcomes.</li>
-            <li>Collaborated with cross-functional teams to analyze business problems and recommend practical, data-driven solutions.</li>
-          </ul>
-        </div>
-
-        <div class="tl-item">
-          <span class="tl-dot"></span>
-          <div class="tl-head">
-            <h3>Technical Assistant</h3>
-            <span class="tl-date">AUG 2019 — MAR 2021</span>
-          </div>
-          <ul class="tl-list">
-            <li>Provided client support, resolving application and database issues while maintaining clear, timely communication with business users.</li>
-            <li>Generated SQL reports and partnered with departments to meet operational reporting requirements.</li>
-            <li>Authored technical documentation and process guides to support internal teams and knowledge transfer.</li>
-            <li>Collaborated with cross-functional teams to streamline workflows and improve day-to-day business processes.</li>
-          </ul>
-        </div>
+    <div class="job">
+      <div class="job-top">
+        <div class="job-role">Business Analyst — IT &amp; Digital Health Systems</div>
+        <div class="job-time">SEP 2025 — MAY 2026</div>
       </div>
+      <div class="job-org">Humana Inc. · Healthcare</div>
+      <ul>
+        <li>Gathered, documented, and translated business and functional requirements for digital health platform enhancements — including member portal and telehealth features — partnering with IT, clinical, and product stakeholders; maintained BRD/FRD repositories in Confluence with version history in Git.</li>
+        <li>Authored BRDs, FRDs, user stories, and process flow diagrams for digital health system integrations, using Cursor (AI-enabled IDE) to speed up requirements analysis, drafting, and consistency checks across large documentation sets.</li>
+        <li>Managed Agile/Scrum delivery end-to-end in JIRA — sprint planning, backlog grooming, stand-ups, sprint reviews — aligning business stakeholders with IT development teams.</li>
+        <li>Wrote and executed SQL queries against Snowflake and Azure-hosted data stores to analyze member enrollment, eligibility, and claims data while maintaining HIPAA compliance and data integrity.</li>
+        <li>Coordinated UAT cycles and developed SQL-based and Python-scripted test cases; logged, prioritized, and tracked defects in JIRA through resolution.</li>
+        <li>Supported API and database-level integrations between digital health platforms and internal enrollment/claims systems with IT, Clinical Operations, and Compliance.</li>
+        <li>Built Power BI dashboards on SQL-driven data models to communicate project progress, risks, and KPIs to stakeholders and leadership; maintained requirements traceability matrices (RTMs).</li>
+      </ul>
+    </div>
+
+    <div class="job">
+      <div class="job-top">
+        <div class="job-role">Data Engineer — Business Analysis &amp; Reporting</div>
+        <div class="job-time">MAR 2021 — MAR 2024</div>
+      </div>
+      <div class="job-org">Pine Labs · Noida, Uttar Pradesh, India</div>
+      <ul>
+        <li>Partnered with business stakeholders to gather and document requirements, translating business needs into reporting and analytics solutions tracked as backlog items in JIRA.</li>
+        <li>Performed business process mapping to identify inefficiencies and recommend improvements adopted across teams.</li>
+        <li>Wrote SQL validation queries against production databases for data quality assurance, logging and tracking issues in JIRA to keep reporting audit-ready.</li>
+        <li>Developed SQL-based analytical reports in Power BI and Tableau that improved operational visibility for leadership decision-making.</li>
+        <li>Automated recurring reporting workflows with Python (Pandas) and SQL stored procedures, reducing manual effort; version-controlled all scripts in Git.</li>
+        <li>Authored technical documentation and SOPs in Confluence, using Cursor to draft and refine documentation faster.</li>
+        <li>Integrated data from multiple internal and external sources via SQL/ETL scripts, expanding reporting capabilities for cross-functional teams.</li>
+      </ul>
+    </div>
+
+    <div class="job">
+      <div class="job-top">
+        <div class="job-role">Technical Assistant</div>
+        <div class="job-time">AUG 2019 — MAR 2021</div>
+      </div>
+      <div class="job-org">Vintech Solutions · Vijayawada, Andhra Pradesh, India</div>
+      <ul>
+        <li>Delivered frontline user support, triaging help desk tickets and troubleshooting application/database issues using SQL diagnostics.</li>
+        <li>Authored technical documentation and training materials to support end users and internal teams.</li>
+        <li>Generated SQL reports and partnered with departments to meet operational reporting requirements.</li>
+        <li>Collaborated cross-functionally to map and streamline workflows, improving business processes.</li>
+      </ul>
     </div>
   </section>
 
-  <!-- PROJECTS -->
   <section id="projects">
-    <div class="wrap">
-      <div class="sec-head">
-        <span class="sec-num">02</span>
-        <h2>Relevant Projects</h2>
-        <p>Applied analytics work spanning AI-assisted insight generation and retail performance analysis.</p>
+    <div class="sec-head"><span class="sec-num">02</span><h2 class="sec-title">Relevant Projects</h2></div>
+    <p class="sec-sub">Applied analytics work spanning AI-assisted insight generation, retail performance, and predictive modeling.</p>
+
+    <div class="projgrid">
+      <div class="proj">
+        <div class="proj-tag">AI / ANALYTICS APP</div>
+        <h3>AI Business Analyst Copilot</h3>
+        <p>Interactive, AI-powered Streamlit app that lets users upload business datasets and automatically generate insights. Automated KPI calculations across sales, profit, regional performance, and category analysis — built with Cursor for AI-assisted development.</p>
+        <div class="stackline">Python · Streamlit · Pandas · NumPy · SQL · Git</div>
       </div>
-
-      <div class="proj-grid">
-        <div class="proj-card">
-          <span class="proj-tag">AI / Analytics App</span>
-          <h3>AI Business Analyst Copilot</h3>
-          <p>An interactive, AI-powered analytics application that lets users upload business datasets and automatically generate insights — no analyst required to get a first read.</p>
-          <p>Automated KPI calculations across sales, profit, regional performance, and category analysis, surfaced through visualization dashboards built to highlight trends, opportunities, and improvement areas.</p>
-          <div class="proj-stats">
-            <div class="proj-stat"><b>4</b><span>KPI domains</span></div>
-            <div class="proj-stat"><b>Auto</b><span>Insight generation</span></div>
-          </div>
-        </div>
-
-        <div class="proj-card">
-          <span class="proj-tag">Tableau Dashboard</span>
-          <h3>Retail Sales Performance Analytics</h3>
-          <p>Analyzed retail transaction data to identify sales trends, customer segments, and product performance patterns across regions and categories.</p>
-          <p>Developed interactive Tableau dashboards with filters and parameters, translating raw transactions into actionable recommendations for sales performance and product strategy.</p>
-          <div class="proj-stats">
-            <div class="proj-stat"><b>Interactive</b><span>Filters &amp; params</span></div>
-            <div class="proj-stat"><b>Segment</b><span>Customer &amp; product</span></div>
-          </div>
-        </div>
+      <div class="proj">
+        <div class="proj-tag">TABLEAU DASHBOARD</div>
+        <h3>Retail Sales Performance Analytics</h3>
+        <p>Analyzed retail transaction data via SQL to identify sales trends, customer segments, and profitability patterns. Built interactive Tableau dashboards with filters and parameters, generating actionable sales-strategy recommendations.</p>
+        <div class="stackline">SQL · Tableau · Python · Excel · Git</div>
+      </div>
+      <div class="proj">
+        <div class="proj-tag">MACHINE LEARNING</div>
+        <h3>Predictive Analytics Project</h3>
+        <p>Built and evaluated machine learning models for prediction and classification tasks in Scikit-learn, including data preprocessing, feature engineering, and performance evaluation.</p>
+        <div class="stackline">Python · Pandas · NumPy · Scikit-learn · Git</div>
       </div>
     </div>
   </section>
 
-  <!-- SKILLS -->
   <section id="skills">
-    <div class="wrap">
-      <div class="sec-head">
-        <span class="sec-num">03</span>
-        <h2>Skills</h2>
-        <p>Grouped by how they show up day-to-day — not just a keyword dump.</p>
-      </div>
+    <div class="sec-head"><span class="sec-num">03</span><h2 class="sec-title">Skills</h2></div>
+    <p class="sec-sub">Grouped by how they show up day-to-day — not just a keyword dump.</p>
 
-      <div class="skills-grid">
-        <div class="skill-cat">
-          <h3>Analysis &amp; Requirements</h3>
-          <div class="chip-row">
-            <span class="chip">Requirements Gathering</span>
-            <span class="chip">Requirements Analysis</span>
-            <span class="chip">Specification Gathering</span>
-            <span class="chip">Business Process Analysis</span>
-            <span class="chip">Analytical Problem-Solving</span>
-          </div>
+    <div class="skillgrid">
+      <div class="skillcat">
+        <h4>Healthcare IT &amp; Requirements</h4>
+        <div class="pill-row">
+          <span class="pill">Healthcare IT &amp; Digital Health Systems</span>
+          <span class="pill">HIPAA Compliance</span>
+          <span class="pill">EHR/EMR &amp; Member Portal Systems</span>
+          <span class="pill">BRD/FRD &amp; User Story Documentation</span>
+          <span class="pill">Business Process Mapping</span>
+          <span class="pill">Requirements Traceability (RTM)</span>
         </div>
-        <div class="skill-cat">
-          <h3>Data &amp; Reporting</h3>
-          <div class="chip-row">
-            <span class="chip">SQL</span>
-            <span class="chip">Power BI</span>
-            <span class="chip">Tableau</span>
-            <span class="chip">Python</span>
-            <span class="chip">Dashboard Development</span>
-            <span class="chip">Data Analysis &amp; Reporting</span>
-            <span class="chip">AI-Enabled Analysis</span>
-          </div>
+      </div>
+      <div class="skillcat">
+        <h4>Data &amp; Reporting</h4>
+        <div class="pill-row">
+          <span class="pill">SQL (Snowflake, Azure SQL)</span>
+          <span class="pill">Power BI</span>
+          <span class="pill">Tableau</span>
+          <span class="pill">Python (Pandas, NumPy, Scikit-learn)</span>
+          <span class="pill">Dashboard &amp; KPI Development</span>
+          <span class="pill">Data Modeling</span>
         </div>
-        <div class="skill-cat">
-          <h3>Tools &amp; Delivery</h3>
-          <div class="chip-row">
-            <span class="chip">Azure</span>
-            <span class="chip">DevOps</span>
-            <span class="chip">Jira</span>
-            <span class="chip">Product Management</span>
-            <span class="chip">Process Documentation</span>
-          </div>
+      </div>
+      <div class="skillcat">
+        <h4>Delivery &amp; Tools</h4>
+        <div class="pill-row">
+          <span class="pill">Agile/Scrum in JIRA</span>
+          <span class="pill">Confluence</span>
+          <span class="pill">Git / Version Control</span>
+          <span class="pill">AI-Enabled IDEs (Cursor)</span>
+          <span class="pill">SQL-Based UAT &amp; Test Scripting</span>
+          <span class="pill">Defect Tracking</span>
         </div>
-        <div class="skill-cat">
-          <h3>Collaboration</h3>
-          <div class="chip-row">
-            <span class="chip">Stakeholder Communication</span>
-            <span class="chip">Remote Collaboration</span>
-            <span class="chip">Cross-functional Teams</span>
-          </div>
+      </div>
+      <div class="skillcat">
+        <h4>Platform &amp; Collaboration</h4>
+        <div class="pill-row">
+          <span class="pill">Azure</span>
+          <span class="pill">AWS</span>
+          <span class="pill">Snowflake</span>
+          <span class="pill">Spark</span>
+          <span class="pill">Stakeholder Communication</span>
+          <span class="pill">Cross-functional Teams</span>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- EDUCATION -->
   <section id="education">
-    <div class="wrap">
-      <div class="sec-head">
-        <span class="sec-num">04</span>
-        <h2>Education</h2>
-        <p>&nbsp;</p>
-      </div>
+    <div class="sec-head"><span class="sec-num">04</span><h2 class="sec-title">Education &amp; Certifications</h2></div>
 
-      <div class="edu-card">
-        <div>
-          <h3>Master of Science in Business Analytics</h3>
-          <div class="muted">Trine University</div>
-          <div class="coursework">
-            <span class="chip">Business Intelligence</span>
-            <span class="chip">Data Visualization</span>
-            <span class="chip">Database Management</span>
-            <span class="chip">Machine Learning</span>
-            <span class="chip">Predictive Analytics</span>
-            <span class="chip">Statistics</span>
-            <span class="chip">Business Analytics</span>
-            <span class="chip">Data Mining</span>
-          </div>
-        </div>
-        <span class="edu-badge">GRADUATED MAY 2026</span>
+    <div class="edu">
+      <div class="edu-top">
+        <h3>Master of Science in Business Analytics</h3>
+        <div class="edu-time">GRADUATED MAY 2026</div>
       </div>
+      <div class="edu-org">Trine University — United States</div>
+      <div class="taglist">
+        <span class="tag">Business Intelligence</span>
+        <span class="tag">Data Visualization</span>
+        <span class="tag">Database Management</span>
+        <span class="tag">Machine Learning</span>
+        <span class="tag">Predictive Analytics</span>
+        <span class="tag">Statistics</span>
+        <span class="tag">Business Analytics</span>
+        <span class="tag">Data Mining</span>
+      </div>
+    </div>
+
+    <div class="certgrid">
+      <div class="cert"><span>SQL for Data Science with R — IBM</span><span class="status done">DONE</span></div>
+      <div class="cert"><span>SQL for Data Science with R Essentials — Coursera</span><span class="status done">DONE</span></div>
+      <div class="cert"><span>Introduction to Data Analytics — IBM</span><span class="status done">DONE</span></div>
+      <div class="cert"><span>Excel Basics for Data Analysis — IBM</span><span class="status done">DONE</span></div>
+      <div class="cert"><span>Data Visualization &amp; Dashboards with Excel &amp; Cognos — IBM</span><span class="status done">DONE</span></div>
+      <div class="cert"><span>Introduction to R Programming for Data Science — IBM</span><span class="status done">DONE</span></div>
+      <div class="cert"><span>Agentic AI Certification</span><span class="status">IN PROGRESS</span></div>
+      <div class="cert"><span>Generative AI Certification</span><span class="status">IN PROGRESS</span></div>
     </div>
   </section>
 
-  <!-- CONTACT -->
-  <section id="contact">
-    <div class="wrap">
-      <div class="contact-panel">
-        <h2>Let's talk about your data.</h2>
-        <p>Open to Business Analyst, Data Analyst, and BI roles — remote or Lafayette, LA based. I'll answer within a day.</p>
-        <div class="btn-row">
-          <a class="btn btn-primary" href="mailto:mvsprudhvi2023@gmail.com">Email Me</a>
-          <a class="btn btn-ghost" href="https://linkedin.com/in/prudhví-m-48655a1a2" target="_blank" rel="noopener">View LinkedIn</a>
-          <a class="btn btn-ghost" href="https://github.com/mvsprudhvi2023-lang" target="_blank" rel="noopener">View GitHub</a>
-        </div>
-      </div>
+  <section class="contact" id="contact" style="border-bottom:none;">
+    <h2>Let's talk about your data.</h2>
+    <p>Open to Business Analyst, Healthcare IT, and Data Analyst / BI roles — remote or Lafayette, LA based. I'll answer within a day.</p>
+    <div class="contact-row">
+      <a class="primary" href="mailto:mvsprudhvi2023@gmail.com">Email Me</a>
+      <a href="https://linkedin.com/in/prudhvi-m-48655a1a2" target="_blank" rel="noopener">View LinkedIn</a>
+      <a href="https://github.com/mvsprudhvi2023-lang" target="_blank" rel="noopener">View GitHub</a>
     </div>
   </section>
-</main>
+</div>
 
-<footer>
-  Built with real numbers, not stock photos. © 2026 Prudhvi Mandapakala.
-</footer>
-
-<script>
-  const ctx = document.getElementById('focusChart');
-  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  new Chart(ctx, {
-    type: 'line',
-    data: {
-      labels: ['2019', '2020', '2021', '2022', '2023', '2024', '2026'],
-      datasets: [
-        {
-          label: 'Requirements & Analysis',
-          data: [30, 40, 55, 65, 75, 80, 88],
-          borderColor: '#4FD1C5',
-          backgroundColor: 'rgba(79,209,197,0.08)',
-          tension: 0.35,
-          fill: true,
-          pointRadius: 0,
-          borderWidth: 2.5,
-        },
-        {
-          label: 'Reporting & Dashboards',
-          data: [20, 35, 50, 70, 82, 90, 92],
-          borderColor: '#F2B84B',
-          backgroundColor: 'rgba(242,184,75,0.06)',
-          tension: 0.35,
-          fill: true,
-          pointRadius: 0,
-          borderWidth: 2.5,
-        }
-      ]
-    },
-    options: {
-      responsive: true,
-      animation: prefersReduced ? false : { duration: 900 },
-      plugins: { legend: { display: false } },
-      scales: {
-        x: { grid: { color: 'rgba(38,52,63,0.6)' }, ticks: { color: '#8B9AAB', font: { family: 'IBM Plex Mono', size: 11 } } },
-        y: { display: false, min: 0, max: 100 }
-      },
-      interaction: { intersect: false }
-    }
-  });
-</script>
+<footer>Built with real numbers, not stock photos. © 2026 Prudhvi Mandapakala.</footer>
 
 </body>
 </html>
